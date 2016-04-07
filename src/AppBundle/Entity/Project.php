@@ -14,6 +14,13 @@ use Doctrine\ORM\Mapping as ORM;
 class Project
 {
     /**
+     * @var int
+     *
+     * @ORM\Id
+     */
+    protected $id;
+
+    /**
      * Name of campaign thing we're trying to get.
      *
      * @var string
