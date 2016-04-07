@@ -14,10 +14,11 @@ use Doctrine\ORM\Mapping as ORM;
 class Project
 {
     /**
-     * @var int
+     * @var integer $id
      *
+     * @ORM\Column(name="id", type="integer", nullable=false, options={"unsigned"=true})
      * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     protected $id;
 
@@ -47,6 +48,14 @@ class Project
      * @ORM\Column(type="decimal", precision=2, scale=5)
      */
     protected $cost;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * @return string
