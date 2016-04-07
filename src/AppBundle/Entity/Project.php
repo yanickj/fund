@@ -45,7 +45,7 @@ class Project
      *
      * @var float
      *
-     * @ORM\Column(type="decimal", precision=2, scale=5)
+     * @ORM\Column(type="decimal", precision=5, scale=2)
      */
     protected $cost;
 
