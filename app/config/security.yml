@@ -2,10 +2,13 @@
 # http://symfony.com/doc/current/book/security.html
 security:
 
-    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
         in_memory:
-            memory: ~
+            memory:
+                users:
+                    client: { password: thisisasecret, roles: 'ROLE_CLIENT' }
+        hwi:
+            id: hwi_oauth.user.provider
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -14,6 +17,7 @@ security:
             security: false
 
         main:
+            pattern: ^/
             anonymous: ~
             # activate different ways to authenticate
 
@@ -22,3 +26,21 @@ security:
 
             # form_login: ~
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+
+            oauth:
+                resource_owners:
+                    google:             "/login/check-google"
+                login_path:        /login
+                use_forward:       false
+                failure_path:      /login
+                check_path:        /login
+
+                oauth_user_provider:
+                    oauth: ~
+
+        login:
+            pattern:  ^/login$
+            security: false
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
