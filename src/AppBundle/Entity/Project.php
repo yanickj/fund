@@ -17,6 +17,7 @@ class Project
      * @var int
      *
      * @ORM\Id
+     * @ORM\GeneratedValue
      */
     protected $id;
 
