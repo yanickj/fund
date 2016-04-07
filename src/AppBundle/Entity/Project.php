@@ -52,7 +52,7 @@ class Project
     /**
      * @var
      *
-     * @ORM\Column(type="int")
+     * @ORM\Column(type="integer")
      */
     protected $minParticipants;
 
