@@ -9,15 +9,20 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        <header class="app__header">
-            <span class="app__logo"></span>
+        <header class="app__header-wrapper">
+            <div class="app__header">
+                <span class="app__logo"></span>
+            </div>
 
-	    {% if app.user %}
+            {% if app.user %}
                 <a href="{{ path('logout') }}">Logout</a>
             {% endif %}
         </header>
 
-        {% block body %}{% endblock %}
+        <main class="app__body">
+            {% block body %}{% endblock %}
+        </main>
+        
         {% block javascripts %}{% endblock %}
     </body>
 </html>
