@@ -50,6 +50,13 @@ class Project
     protected $cost;
 
     /**
+     * @var
+     *
+     * @ORM\Column(type="int")
+     */
+    protected $minParticipants;
+
+    /**
      * @return int
      */
     public function getId()
@@ -115,5 +122,21 @@ class Project
         $this->cost = $cost;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMinParticipants()
+    {
+        return $this->minParticipants;
+    }
+
+    /**
+     * @param mixed $minParticipants
+     */
+    public function setMinParticipants($minParticipants)
+    {
+        $this->minParticipants = $minParticipants;
     }
 }
