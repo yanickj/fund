@@ -36,7 +36,7 @@ class Project
      *
      * @var string
      *
-     * @ORM\Column(type="longtext")
+     * @ORM\Column(type="text")
      */
     protected $description;
 
