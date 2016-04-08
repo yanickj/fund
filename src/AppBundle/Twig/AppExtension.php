@@ -37,7 +37,8 @@ class AppExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('isParticipant', [$this->participation, 'isParticipant'])
+            new \Twig_SimpleFunction('isParticipant', [$this->participation, 'isParticipant']),
+            new \Twig_SimpleFunction('costPerParticipant', [$this->participation, 'costPerParticipant'])
         ];
     }
 

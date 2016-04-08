@@ -49,4 +49,26 @@ class ParticipationService
 
         return !is_null($participation);
     }
+
+    /**
+     * @param Project $project
+     *
+     * @return float
+     */
+    public function costPerParticipant(Project $project)
+    {
+        setlocale(LC_MONETARY, 'en_US');
+        $participants = $this->participants->findBy(['project' => $project]);
+        $denominator = count($participants);
+        $value = ($denominator == 0) ? $project->getCost() : $project->getCost() / $denominator;
+
+        return $this->moneyFormat($value);
+    }
+
+    protected function moneyFormat($value)
+    {
+        $float = round($value, 2);
+
+        return money_format('%n', $float);
+    }
 }
