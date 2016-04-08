@@ -1,14 +1,18 @@
-<html>
-    <body style="background: #069;">
-        <div style="margin: auto; width: 500px; height:500px; background:#fff;">
+{% extends 'base.html.twig' %}
 
-            {% if error is defined and error %}
-                <span>{{ error }}</span>
-            {% endif %}
-            {% for owner in hwi_oauth_resource_owners() %}
-                <a href="{{ hwi_oauth_login_url(owner) }}">{{ owner | trans({}, 'HWIOAuthBundle') }}</a> <br />
-            {% endfor %}
-        </div>
-    </body>
-</html>
+{% block body %}
 
+    <p class="login__subtitle">
+        Welcome to Sidefund! Have fun(d)!
+    </p>
+
+    <div class="login__link-wrapper">
+        {% if error is defined and error %}
+            <span>{{ error }}</span>
+        {% endif %}
+        {% for owner in hwi_oauth_resource_owners() %}
+            <a href="{{ hwi_oauth_login_url(owner) }}" class="login__link">Login with {{ owner | trans({}, 'HWIOAuthBundle') }}</a> <br />
+        {% endfor %}
+    </div>
+
+{% endblock %}

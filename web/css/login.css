@@ -1,0 +1,17 @@
+.login__subtitle {
+    text-align: center;
+    font-size: 2em;
+    padding-bottom: 0.75em;
+}
+
+.login__link-wrapper {
+    text-align: center;
+}
+
+.login__link {
+    color: white;
+    background: steelblue;
+    text-decoration: none;
+    padding: 0.5em 1em;
+    border-radius: 3px;
+}
