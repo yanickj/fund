@@ -51,6 +51,7 @@
 .projects__card-control {
   background: #EAEBEC;
   height: 2em;
+  padding: 0 0.75em;
   display: flex;
 }
 
@@ -61,15 +62,17 @@
 .projects__fund-button {
   background: #95C11F;
   color: #fff;
+  padding: 0.75em 1.5em;
 }
 
 .projects__card-header {
     display: flex;
-    padding: 0.5em;
+    padding: 0.5em 1em;
     align-items: center;
 }
 
 .projects__name {
+    font-size: 1.2em;
     flex: 1 1 auto;
     color: #009FE3;
 }
@@ -108,16 +111,19 @@
 .projects__detail-title {
   font-size: 1em;
   margin: 0;
+  font-family: Glober-Light;
 }
 
 .projects__detail-value {
   font-size: 2em;
   margin: 0.5em 0;
+  font-family: Roboto;
 }
 
 .projects__detail-subtext {
   font-size: 0.75em;
   margin: 0;
+  font-family: Glober-Light;
 }
 
 .projects__card-description {
