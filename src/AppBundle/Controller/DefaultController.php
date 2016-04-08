@@ -17,7 +17,7 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $qb = $em->getRepository('AppBundle:Project')->createQueryBuilder('p');
         $qb->orderBy('p.expirationDate', 'ASC');
-        $projects = $this->get('knp_paginator')->paginate($qb, $request->query->getInt('page', 1), 12);
+        $projects = $this->get('knp_paginator')->paginate($qb, $request->query->getInt('page', 1), 2);
 
         return $this->render('project/index.html.twig', array(
             'projects' => $projects,
