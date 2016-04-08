@@ -74,6 +74,11 @@ class Project
      */
     protected $expirationDate;
 
+    public function __construct()
+    {
+        $this->expirationDate = new \DateTime();
+    }
+
     /**
      * @return int
      */
