@@ -28,14 +28,14 @@
                     </div>
 
                     <div>
-                        {{ form_label(form.expirationDate) }}
-                        {{ form_widget(form.expirationDate, { 'attr': { 'class': 'projects-new__expiration',  'placeholder': 'Expiration Date' } }) }}
+                        {{ form_widget(form.expirationDate, { 'attr': { 'class': 'projects-new__expiration' } }) }}
                     </div>
                 </div>
 
-                <fieldset class="projects-new__controls">
-                    {{ form_label(form.imageLink) }}
-                    {{ form_widget(form.imageLink, { 'attr': { 'placeholder': 'Image Link' } }) }}
+                <div class="projects-new__controls">
+                    <div class="projects-new__image">
+                        Image: {{ form_widget(form.imageLink, { 'attr': { 'placeholder': 'Image Link' } }) }}
+                    </div>
 
                     <input class="projects-new__submit" type="submit" value="SUBMIT" />
                 </fieldset>

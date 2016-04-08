@@ -7,6 +7,7 @@ use AppBundle\Entity\Project;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class ParticipantController
@@ -40,6 +41,8 @@ class ParticipantController extends Controller
      * @param Project $project
      *
      * @Route("/defund/{id}", name="defund")
+     *
+     * @return Response
      */
     public function defundAction(Request $request, Project $project)
     {

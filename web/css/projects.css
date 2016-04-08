@@ -85,8 +85,12 @@
     color: #009FE3;
 }
 
-.projects__card-picture {
+.projects__card-picture-wrapper {
   min-height: 40px;
+}
+
+.projects__card-picture {
+  width: 100%;
 }
 
 .projects__card-detail {
