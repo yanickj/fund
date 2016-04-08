@@ -64,6 +64,7 @@
   padding: 0.75em 1.5em;
   text-decoration: none;
   width: 100px;
+  text-align: center;
 }
 
 .projects__defund-button {
@@ -72,11 +73,12 @@
   padding: 0.75em 1.5em;
   text-decoration: none;
   width: 100px;
+  text-align: center;
 }
 
 .projects__card-header {
     display: flex;
-    padding: 0.5em 1em;
+    padding: 1em;
     align-items: center;
     background: #EAEBEC;
     border-bottom: 1px solid #C6C6C6;
