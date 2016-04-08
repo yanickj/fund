@@ -32,7 +32,7 @@ class ParticipantController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->persist($participant);
         $em->flush();
-        $this->redirect("/");
+        return $this->redirect("/");
     }
 
     /**
