@@ -81,7 +81,8 @@ class ParticipationService
      */
     public function maxCostPerParticipant(Project $project)
     {
-        $value = $project->getCost() / $project->getMinParticipants();
+        $denominator = $project->getMinParticipants();
+        $value = ($denominator == 0) ? $project->getCost() : $project->getCost() / $denominator;
 
         return $this->moneyFormat($value);
     }

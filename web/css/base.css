@@ -46,6 +46,8 @@ fieldset {
 .app__header {
   max-width: 980px;
   margin: auto;
+  display: flex;
+  align-items: center;
 }
 
 .app__logo {
@@ -55,6 +57,10 @@ fieldset {
   background-size: cover;
   background-origin: content-box;
   display: inline-block;
+}
+
+.app__header-placeholder {
+  flex: 1 1 auto;
 }
 
 .app__body {
