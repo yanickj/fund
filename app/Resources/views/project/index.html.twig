@@ -32,6 +32,10 @@
                         <li>
                             <a href="{{ path('project_edit', { 'id': project.id }) }}">edit</a>
                         </li>
+                        {% if not isParticipant(project) %}
+                            <li><a href="#">Fund</a></li>
+
+                        {% endif %}
                     </ul>
                 </td>
             </tr>
