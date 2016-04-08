@@ -33,7 +33,7 @@ class Participant
     /**
      * @var string
      *
-     * @ORM\Column(name="`name`", type="string", length="32")
+     * @ORM\Column(name="`name`", type="string", length=32)
      */
     protected $name;
 
