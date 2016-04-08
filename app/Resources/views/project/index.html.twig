@@ -61,4 +61,8 @@
     <div class="navigation">
         {{ knp_pagination_render(projects) }}
     </div>
+
+    <div class="project-new__modal-wrapper">
+        {{ render(controller('AppBundle:Project:new')) }}
+    </div>
 {% endblock %}
