@@ -1,7 +1,15 @@
 .projects__controls {
-
+  display: flex;
 }
 
+#filter div {
+  display: inline-block;
+  margin-left: .5em;
+}
+
+.projects__new-link {
+  flex: 1 1 auto;
+}
 .projects__new-icon {
   background: url("/images/icon-add-campaign.svg") no-repeat;
   background-size: cover;
