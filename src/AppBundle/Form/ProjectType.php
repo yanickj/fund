@@ -19,6 +19,7 @@ class ProjectType extends AbstractType
             ->add('description')
             ->add('cost')
             ->add('minParticipants')
+            ->add('imageLink')
         ;
     }
     

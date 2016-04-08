@@ -57,6 +57,15 @@ class Project
     protected $minParticipants;
 
     /**
+     * Image link of thing we're trying to get.
+     *
+     * @var string
+     *
+     * @ORM\Column(type="string", length=128)
+     */
+    protected $imageLink;
+
+    /**
      * @return int
      */
     public function getId()
@@ -138,5 +147,25 @@ class Project
     public function setMinParticipants($minParticipants)
     {
         $this->minParticipants = $minParticipants;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImageLink()
+    {
+        return $this->imageLink;
+    }
+
+    /**
+     * @param string $imageLink
+     *
+     * @return $this
+     */
+    public function setImageLink($imageLink)
+    {
+        $this->imageLink = $imageLink;
+
+        return $this;
     }
 }

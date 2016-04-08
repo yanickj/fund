@@ -10,6 +10,8 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th>Cost</th>
+                <th>MinPeople</th>
+                <th>Image</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -20,6 +22,8 @@
                 <td>{{ project.name }}</td>
                 <td>{{ project.description }}</td>
                 <td>{{ project.cost }}</td>
+                <td>{{ project.minParticipants }}</td>
+                <td><img src="{{ project.imageLink }}" /></td>
                 <td>
                     <ul>
                         <li>
