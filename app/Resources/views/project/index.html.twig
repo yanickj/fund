@@ -2,7 +2,7 @@
 
 {% block body %}
     <div class="projects__controls">
-        <a class="projects__new-link" href="{{ path('project_new') }}">
+        <a class="projects__new-link" href="#"  id="new-campaign">
           <span class="projects__new-icon"></span>
           New Campaign
         </a>
@@ -48,7 +48,7 @@
 
                   <div class="projects__card-days-left">
                       <p class="projects__detail-title">Days Left to Fun(d)</p>
-                      <p class="projects__detail-value">4</p>
+                      <p class="projects__detail-value">{{ countDown(project) }}4</p>
                   </div>
               </div>
 
@@ -60,5 +60,9 @@
     </div>
     <div class="navigation">
         {{ knp_pagination_render(projects) }}
+    </div>
+
+    <div class="project-new__modal-wrapper project-new__modal--hidden" id="new-campaign-modal">
+        {{ render(controller('AppBundle:Project:new')) }}
     </div>
 {% endblock %}

@@ -36,7 +36,10 @@ class ProjectController extends Controller
     public function newAction(Request $request)
     {
         $project = new Project();
-        $form = $this->createForm('AppBundle\Form\ProjectType', $project);
+        $form = $this->createForm('AppBundle\Form\ProjectType', $project, array(
+            'action' => $this->generateUrl('project_new'),
+            'method' => 'POST',
+        ));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -44,7 +47,7 @@ class ProjectController extends Controller
             $em->persist($project);
             $em->flush();
 
-            return $this->redirectToRoute('project_show', array('id' => $project->getId()));
+            return $this->redirect('/');
         }
 
         return $this->render('project/new.html.twig', array(

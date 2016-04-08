@@ -52,6 +52,8 @@ class ParticipationService
     }
 
     /**
+     * Get the participant record for the currently logged in user given a project.
+     *
      * @param Project $project
      *
      * @return null|object
@@ -62,6 +64,8 @@ class ParticipationService
     }
 
     /**
+     * Get the cost per participant given a project.
+     *
      * @param Project $project
      *
      * @return float
@@ -75,6 +79,8 @@ class ParticipationService
     }
 
     /**
+     * Get the maximum cost of the project per person given a project.
+     *
      * @param Project $project
      *
      * @return string
@@ -88,6 +94,8 @@ class ParticipationService
     }
 
     /**
+     * Get the number of participants given a project.
+     *
      * @param Project $project
      *
      * @return int
@@ -99,7 +107,19 @@ class ParticipationService
         return count($participants);
     }
 
+    public function getDaysToRegister(Project $project)
+    {
+        $now = new DateTime('now');
+        $expire = clone $project->getExpirationDate();
+        $expire->modify('+ 1 day');
+        $diff = $expire->diff($now);
+
+        return $diff->format('%a');
+    }
+
     /**
+     * Return a string in money format.
+     *
      * @param $value
      *
      * @return string

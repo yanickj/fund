@@ -8,12 +8,14 @@
 
 namespace AppBundle\Twig;
 
-
-use AppBundle\Entity\Project;
 use AppBundle\Service\ParticipationService;
-use Doctrine\ORM\EntityManager;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
+/**
+ * Class AppExtension
+ *
+ * @package AppBundle\Twig
+ * @author Józef Janik <joe@getsidecar.com>
+ */
 class AppExtension extends \Twig_Extension
 {
     /**
@@ -40,7 +42,8 @@ class AppExtension extends \Twig_Extension
             new \Twig_SimpleFunction('isParticipant', [$this->participation, 'isParticipant']),
             new \Twig_SimpleFunction('costPerParticipant', [$this->participation, 'costPerParticipant']),
             new \Twig_SimpleFunction('maxCostPerParticipant', [$this->participation, 'maxCostPerParticipant']),
-            new \Twig_SimpleFunction('getParticipantCount', [$this->participation, 'getParticipantCount'])
+            new \Twig_SimpleFunction('getParticipantCount', [$this->participation, 'getParticipantCount']),
+            new \Twig_SimpleFunction('countDown', [$this->participation, 'getDaysToRegister']),
         ];
     }
 
