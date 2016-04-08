@@ -58,22 +58,12 @@
   margin-right: 0;
 }
 
-.projects__card-control {
-  background: #EAEBEC;
-  height: 2em;
-  padding: 0 0.75em;
-  display: flex;
-}
-
-.projects__card-control input[type="button"] {
-  background: none;
-}
-
 .projects__fund-button {
   background: #95C11F;
   color: #fff;
   padding: 0.75em 1.5em;
   text-decoration: none;
+  width: 100px;
 }
 
 .projects__defund-button {
@@ -81,12 +71,15 @@
   color: #fff;
   padding: 0.75em 1.5em;
   text-decoration: none;
+  width: 100px;
 }
 
 .projects__card-header {
     display: flex;
     padding: 0.5em 1em;
     align-items: center;
+    background: #EAEBEC;
+    border-bottom: 1px solid #C6C6C6;
 }
 
 .projects__name {

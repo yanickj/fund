@@ -12,11 +12,6 @@
     <div class="projects__cards">
       {% for project in projects %}
           <div class="projects__card">
-              <div class="projects__card-control">
-                  <input class="projects__campaign-button" type="button" value="Campaign" />
-                  <input class="projects__description-button" type="button" value="Description" />
-              </div>
-
               <header class="projects__card-header">
                   <div class="projects__name">{{ project.name }}</div>
 
@@ -26,7 +21,7 @@
                       </a>
                   {% else %}
                       <a class="projects__fund-button" href="{{ path('fund', {'id': project.id}) }}">
-                          Fun(d) it!
+                          FUN(D)!
                       </a>
                   {% endif %}
               </header>
