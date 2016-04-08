@@ -58,11 +58,19 @@
 
 .projects-new__controls {
   margin-top: 0.75rem;
-  text-align: right;
+  display: flex;
+}
+
+.projects-new__image {
+    flex: 1 1 auto;
 }
 
 .projects-new__form-wrapper label {
   display: none;
+}
+
+.projects-new__picture-label {
+  display: inline-block;
 }
 
 .projects-new__name {

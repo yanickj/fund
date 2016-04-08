@@ -43,6 +43,13 @@ class ProjectController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $imageFile = $project->getImageLink();
+            $imageFileName = md5(uniqid()).'.'.$imageFile->guessExtension();
+            $imagesDir = $this->container->getParameter('kernel.root_dir').'/../web/uploads/images';
+            $imageFile->move($imagesDir, $imageFileName);
+
+            $project->setImageLink($imageFileName);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($project);
             $em->flush();
