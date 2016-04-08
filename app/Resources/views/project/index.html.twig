@@ -34,7 +34,7 @@
                   <div class="projects__card-current-cost">
                       <p class="projects__detail-title">Current Cost / Person</p>
                       <p class="projects__detail-value">{{ costPerParticipant(project) }}</p>
-                      <p class="projects__detail-subtext">(12 participants)</p>
+                      <p class="projects__detail-subtext">({{ getParticipantCount(project) }} participants)</p>
                   </div>
 
                   <div class="projects__card-days-left">

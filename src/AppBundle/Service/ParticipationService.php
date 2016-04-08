@@ -57,8 +57,7 @@ class ParticipationService
      */
     public function costPerParticipant(Project $project)
     {
-        $participants = $this->participants->findBy(['project' => $project]);
-        $denominator = count($participants);
+        $denominator = $this->getParticipantCount($project);
         $value = ($denominator == 0) ? $project->getCost() : $project->getCost() / $denominator;
 
         return $this->moneyFormat($value);
@@ -74,6 +73,18 @@ class ParticipationService
         $value = $project->getCost() / $project->getMinParticipants();
 
         return $this->moneyFormat($value);
+    }
+
+    /**
+     * @param Project $project
+     *
+     * @return int
+     */
+    public function getParticipantCount(Project $project)
+    {
+        $participants = $this->participants->findBy(['project' => $project]);
+
+        return count($participants);
     }
 
     /**

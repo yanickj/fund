@@ -39,7 +39,8 @@ class AppExtension extends \Twig_Extension
         return [
             new \Twig_SimpleFunction('isParticipant', [$this->participation, 'isParticipant']),
             new \Twig_SimpleFunction('costPerParticipant', [$this->participation, 'costPerParticipant']),
-            new \Twig_SimpleFunction('maxCostPerParticipant', [$this->participation, 'maxCostPerParticipant'])
+            new \Twig_SimpleFunction('maxCostPerParticipant', [$this->participation, 'maxCostPerParticipant']),
+            new \Twig_SimpleFunction('getParticipantCount', [$this->participation, 'getParticipantCount'])
         ];
     }
 
