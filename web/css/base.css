@@ -44,6 +44,7 @@ fieldset {
 
 .app__header {
   max-width: 980px;
+  margin: auto;
 }
 
 .app__logo {
@@ -56,6 +57,13 @@ fieldset {
 }
 
 .app__body {
-    max-width: 980px;
-    padding: 1rem 3rem;
+  max-width: 980px;
+  margin: auto;
+  padding: 2rem 0;
+}
+
+@media (max-width: 1200px) {
+  .app__body {
+    padding: 2rem 3rem;
+  }
 }
