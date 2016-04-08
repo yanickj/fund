@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @package AppBundle\Entity
  * @ORM\Entity
- * @ORM\Table(name="participants", indexes={@ORM\Index(name="idx_project_participants", columns={"name", "project_id"})}
+ * @ORM\Table(name="participants", indexes={@ORM\Index(name="idx_project_participants", columns={"name", "project_id"})})
  */
 class Participant
 {
@@ -33,7 +33,7 @@ class Participant
     /**
      * @var string
      *
-     * @ORM\Column(name="`name`", type="string", length="32")
+     * @ORM\Column(name="`name`", type="string", length=32)
      */
     protected $name;
 
