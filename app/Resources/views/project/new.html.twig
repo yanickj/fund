@@ -4,12 +4,12 @@
             <div class="projects-new__title">New Campaign</div>
             <div class="projects-new__header-placeholder"></div>
             <div class="projects-new__close-wrapper">
-                <span class="projects-new__close"></span>
+                <span class="projects-new__close" id="close-modal"></span>
             </div>
         </header>
 
         <div class="projects-new__form-wrapper">
-            {{ form_start(form) }}
+            {{ form_start(form, { 'attr': { 'id': 'new-project-form' } }) }}
                 {{ form_label(form.name) }}
                 {{ form_widget(form.name, { 'attr': { 'class': 'projects-new__name', 'placeholder': 'Campaign Name' } }) }}
 
@@ -37,7 +37,7 @@
                     {{ form_label(form.imageLink) }}
                     {{ form_widget(form.imageLink, { 'attr': { 'placeholder': 'Image Link' } }) }}
 
-                    <input class="projects-new__submit type="submit" value="SUBMIT" />
+                    <input class="projects-new__submit" type="submit" value="SUBMIT" />
                 </fieldset>
             {{ form_end(form) }}
         </div>

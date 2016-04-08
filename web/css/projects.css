@@ -148,3 +148,7 @@
   display: flex;
   align-items: center;
 }
+
+.project-new__modal--hidden {
+    display: none;
+}
