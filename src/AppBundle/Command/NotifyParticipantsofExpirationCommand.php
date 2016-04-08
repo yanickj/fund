@@ -48,9 +48,14 @@ class NotifyParticipantsofExpirationCommand extends ContainerAwareCommand
         foreach($expiredProjects as $expiredProject)
         {
             $participants = $this->getParticipants($expiredProject);
+            $expiredProjectCount = count($participants);
             foreach($participants as $participant)
             {
-                $this->url = $this->generateUrl($participant);
+                $this->url = $this->generateUrl($participant,
+                                                $expiredProject->getMinParticipants(),
+                                                $expiredProjectCount,
+                                                $expiredProject->getCost()/$expiredProjectCount,
+                                                $expiredProject->getName());
                 $this->sendCurlRequest();
             }
         }
@@ -68,13 +73,17 @@ class NotifyParticipantsofExpirationCommand extends ContainerAwareCommand
             ->findBy(['project' => $expiredProject]);
     }
 
-    public function generateUrl($participant)
+    public function generateUrl($participant,
+                                $expiredProjectMin,
+                                $expiredProjectCount,
+                                $expiredProjectCost,
+                                $expiredProjectName)
     {
         $params = [
             'url' => "https://slack.com/api/chat.postMessage",
             'token' => $this->getContainer()->getParameter('client_token'),
-            'channel' => '%40'.$participant['name'],
-            'text' => 'hi',
+            'channel' => '%40'.$participant->getName(),
+            'text' => $this->getText($expiredProjectMin, $expiredProjectCount, $expiredProjectCost, $expiredProjectName),
             'username' => 'SideFun(d)',
             'icon_emoji' => '%3Aparty%3A',
             'pretty' => 1,
@@ -97,6 +106,15 @@ class NotifyParticipantsofExpirationCommand extends ContainerAwareCommand
         curl_setopt($ch, CURLOPT_URL, $this->url);
         curl_exec($ch);
         curl_close($ch);
+    }
+
+    public function getText($expiredProjectMin, $expiredProjectCount, $expiredProjectCost, $expiredProjectName)
+    {
+        if ($expiredProjectMin >= $expiredProjectCount)
+        {
+            return 'Hooray! Your project, '.$expiredProjectName.' was funded! You owe '.$expiredProjectCost.'.';
+        }
+        return 'Sorry. Not enough people funded '.$expiredProjectName.'.';
     }
 
 }
