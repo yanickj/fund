@@ -109,7 +109,7 @@ class ParticipationService
 
     public function getDaysToRegister(Project $project)
     {
-        $now = new DateTime('now');
+        $now = new \DateTime('now');
         $expire = clone $project->getExpirationDate();
         $expire->modify('+ 1 day');
         $diff = $expire->diff($now);
