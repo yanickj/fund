@@ -50,7 +50,7 @@ class NotifyParticipantsofExpirationCommand extends ContainerAwareCommand
             $participants = $this->getParticipants($expiredProject);
             foreach($participants as $participant)
             {
-                $this->url = $this->generateUrl();
+                $this->url = $this->generateUrl($participant);
                 $this->sendCurlRequest();
             }
         }
@@ -68,12 +68,12 @@ class NotifyParticipantsofExpirationCommand extends ContainerAwareCommand
             ->findBy(['project' => $expiredProject]);
     }
 
-    public function generateUrl()
+    public function generateUrl($participant)
     {
         $params = [
-            'url' => "https://slack.com/api/chat.postMessage?",
+            'url' => "https://slack.com/api/chat.postMessage",
             'token' => $this->getContainer()->getParameter('client_token'),
-            'channel' => '%40sharon',
+            'channel' => '%40'.$participant['name'],
             'text' => 'hi',
             'username' => 'SideFun(d)',
             'icon_emoji' => '%3Aparty%3A',
@@ -84,13 +84,15 @@ class NotifyParticipantsofExpirationCommand extends ContainerAwareCommand
             '?token='.$params['token'].
             '&channel='.$params['channel'].
             '&text='.$params['text'].
-            '&username='.$params['uesrname'].
+            '&username='.$params['username'].
             '&icon_emoji='.$params['icon_emoji'].
             '&pretty='.$params['pretty'];
     }
 
     public function sendCurlRequest()
     {
+        echo $this->url;
+
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->url);
         curl_exec($ch);
