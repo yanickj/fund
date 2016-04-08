@@ -18,9 +18,7 @@ class DefaultController extends Controller
         $filter->handleRequest($request);
         if ($filter->isSubmitted() && $filter->isValid()) {
             $data = $filter->getData();
-            if ($data['filter'] == 'Mine') {
-                $filter->add('foo', 'text');
-            }
+            var_dump($data);
         }
         $em = $this->getDoctrine()->getManager();
         $qb = $em->getRepository('AppBundle:Project')->createQueryBuilder('p');
