@@ -41,7 +41,7 @@
 .projects__card {
   margin-right: 2rem;
   margin-bottom: 2rem;
-  width: 48%;
+  width: calc(50% - 1rem);
   border: 1px solid #C6C6C6;
 }
 
@@ -147,7 +147,7 @@
 }
 
 .projects__card-description {
-  display: none;
+  padding: 0.5em 1em 1em;
 }
 
 .project-new__modal-wrapper {
