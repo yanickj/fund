@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class ProjectType extends AbstractType
 {
@@ -20,7 +21,7 @@ class ProjectType extends AbstractType
             ->add('description')
             ->add('cost')
             ->add('minParticipants')
-            ->add('imageLink')
+            ->add('imageLink', FileType::class)
             ->add(
                 'expirationDate',
                 'date',
@@ -30,7 +31,7 @@ class ProjectType extends AbstractType
             )
         ;
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */
