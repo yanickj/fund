@@ -19,3 +19,4 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
     client_id: foo
     client_secret: shit
+    client_token: bar
