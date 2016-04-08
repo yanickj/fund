@@ -10,8 +10,13 @@ services:
   app.twig_extension:
     class: AppBundle\Twig\AppExtension
     arguments:
-      - @doctrine.orm.default_entity_manager
-      - @security.token_storage
+      - @app.participation_service
     public: false
     tags:
       - { name: twig.extension }
+
+  app.participation_service:
+    class: AppBundle\Service\ParticipationService
+    arguments:
+      - @doctrine.orm.default_entity_manager
+      - @security.token_storage

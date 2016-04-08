@@ -10,35 +10,25 @@ namespace AppBundle\Twig;
 
 
 use AppBundle\Entity\Project;
+use AppBundle\Service\ParticipationService;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 class AppExtension extends \Twig_Extension
 {
     /**
-     * @var EntityManager
+     * @var ParticipationService
      */
-    protected $participants;
+    protected $participation;
 
     /**
      * AppExtension constructor.
      *
-     * @param EntityManager $em
+     * @param ParticipationService $participation
      */
-    public function __construct(EntityManager $em, TokenStorage $context)
+    public function __construct(ParticipationService $participation)
     {
-        $this->participants = $em->getRepository('AppBundle:Participant');
-        $this->context = $context;
-    }
-
-    /**
-     * @param Project $project
-     */
-    public function isParticipant(Project $project)
-    {
-        $participation = $this->participants->findOneBy(['project' => $project, 'name' => $this->context->getToken()->getUser()->getUsername()]);
-
-        return !is_null($participation);
+        $this->participation = $participation;
     }
 
     /**
@@ -47,7 +37,7 @@ class AppExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('isParticipant', [$this, 'isParticipant'])
+            new \Twig_SimpleFunction('isParticipant', [$this->participation, 'isParticipant'])
         ];
     }
 
