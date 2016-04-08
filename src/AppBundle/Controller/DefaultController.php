@@ -14,6 +14,14 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $filter = $this->createForm('AppBundle\Form\FilterType');
+        $filter->handleRequest($request);
+        if ($filter->isSubmitted() && $filter->isValid()) {
+            $data = $filter->getData();
+            if ($data['filter'] == 'Mine') {
+                $filter->add('foo', 'text');
+            }
+        }
         $em = $this->getDoctrine()->getManager();
         $qb = $em->getRepository('AppBundle:Project')->createQueryBuilder('p');
         $qb->orderBy('p.expirationDate', 'ASC');
@@ -21,6 +29,7 @@ class DefaultController extends Controller
 
         return $this->render('project/index.html.twig', array(
             'projects' => $projects,
+            'filter' => $filter,
         ));
     }
 
@@ -37,5 +46,10 @@ class DefaultController extends Controller
         $participant = $finder->findOneBy(['name' => $usr->getUsername(), 'project' => $project]);
 
         return is_null($participant);
+    }
+
+    private function createFilterForm(Request $request)
+    {
+        return $this->createForm('AppBundle\Form\FilterType');
     }
 }
