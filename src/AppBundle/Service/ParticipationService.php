@@ -57,7 +57,6 @@ class ParticipationService
      */
     public function costPerParticipant(Project $project)
     {
-        setlocale(LC_MONETARY, 'en_US');
         $participants = $this->participants->findBy(['project' => $project]);
         $denominator = count($participants);
         $value = ($denominator == 0) ? $project->getCost() : $project->getCost() / $denominator;
@@ -65,8 +64,26 @@ class ParticipationService
         return $this->moneyFormat($value);
     }
 
+    /**
+     * @param Project $project
+     *
+     * @return string
+     */
+    public function maxCostPerParticipant(Project $project)
+    {
+        $value = $project->getCost() / $project->getMinParticipants();
+
+        return $this->moneyFormat($value);
+    }
+
+    /**
+     * @param $value
+     *
+     * @return string
+     */
     protected function moneyFormat($value)
     {
+        setlocale(LC_MONETARY, 'en_US');
         $float = round($value, 2);
 
         return money_format('%n', $float);
