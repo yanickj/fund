@@ -18,21 +18,39 @@ use Symfony\Component\HttpFoundation\Request;
 class ParticipantController extends Controller
 {
     /**
-     * @Route("/fund/{id}", name="participate")
+     * @Route("/fund/{id}", name="fund")
      */
     public function fundAction(Request $request, Project $project)
     {
-        if ($this->get('app.participation_service')->isParticipant($project)) {
-            return $this->redirect("/");
+        if (!$this->get('app.participation_service')->isParticipant($project)) {
+            $participant = new Participant();
+            $participant
+                ->setName($this->getUsername())
+                ->setProject($project);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($participant);
+            $em->flush();
         }
-        $participant = new Participant();
-        $participant
-            ->setName($this->getUsername())
-            ->setProject($project);
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($participant);
-        $em->flush();
-        return $this->redirect("/");
+
+        return $this->redirect($this->generateUrl('project_show', [$project]));
+    }
+
+    /**
+     * @param Request $request
+     * @param Project $project
+     *
+     * @Route("/defund/{id}", name="defund")
+     */
+    public function defundAction(Request $request, Project $project)
+    {
+        $participant = $this->get('app.participation_service')->getParticipant($project);
+        if (!empty($participant)) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($participant);
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('project_show', [$project]));
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace AppBundle\Service;
 
+use AppBundle\Entity\Participant;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use AppBundle\Entity\Project;
@@ -9,7 +10,7 @@ use AppBundle\Entity\Project;
 /**
  * Class ParticipationService
  *
- * A service for determining if the logged in user is a participant.
+ * A service for determining things about a projects participation.
  *
  * @package AppBundle\Service
  */
@@ -45,9 +46,19 @@ class ParticipationService
      */
     public function isParticipant(Project $project)
     {
-        $participation = $this->participants->findOneBy(['project' => $project, 'name' => $this->context->getToken()->getUser()->getUsername()]);
+        $participation = $this->getParticipant($project);
 
         return !is_null($participation);
+    }
+
+    /**
+     * @param Project $project
+     *
+     * @return null|object
+     */
+    public function getParticipant(Project $project)
+    {
+        return $this->participants->findOneBy(['project' => $project, 'name' => $this->context->getToken()->getUser()->getUsername()]);
     }
 
     /**
