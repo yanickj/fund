@@ -14,11 +14,13 @@
         <header class="app__header-wrapper">
             <div class="app__header">
                 <span class="app__logo"></span>
-            </div>
 
-            {% if app.user %}
-                <a href="{{ path('logout') }}">Logout</a>
-            {% endif %}
+                <span class="app__header-placeholder"></span>
+
+                {% if app.user %}
+                    <a class="app__logout" href="{{ path('logout') }}">Logout</a>
+                {% endif %}
+            </div>
         </header>
 
         <main class="app__body">
