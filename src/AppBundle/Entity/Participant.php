@@ -25,7 +25,7 @@ class Participant
     /**
      * @var Project
      *
-     * @ORM\OneToOne(targetEntity="Project")
+     * @ORM\ManyToOne(targetEntity="Project")
      * @ORM\JoinColumn(name="project_id", onDelete="CASCADE")
      */
     protected $project;
