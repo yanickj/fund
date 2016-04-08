@@ -19,6 +19,7 @@ class FilterType extends AbstractType
                 'expire' => 'Expiring Soon',
                 'me' => 'Mine',
             ],
+            'label' => false
         ]);
         $builder->add('search', 'submit');
     }
