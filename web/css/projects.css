@@ -1,0 +1,131 @@
+.projects__controls {
+
+}
+
+.projects__new-icon {
+  background: url("/images/icon-add-campaign.svg") no-repeat;
+  background-size: cover;
+  background-origin: content-box;
+  display: inline-block;
+  height: 1em;
+  width: 1em;
+  position: relative;
+  top: 0.1em;
+}
+
+.projects__new-link,
+.projects__new-link:active,
+.projects__new-link:visited {
+  text-decoration: none;
+  color: #1D71B8;
+}
+
+.projects__cards {
+  margin-top: 2em;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.projects__cards input[type="button"] {
+  border: 0;
+}
+
+.projects__card {
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+  width: 48%;
+  border: 1px solid #C6C6C6;
+}
+
+@media (max-width: 962px) {
+  .projects__card {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
+.projects__card:nth-child(even) {
+  margin-right: 0;
+}
+
+.projects__card-control {
+  background: #EAEBEC;
+  height: 2em;
+  padding: 0 0.75em;
+  display: flex;
+}
+
+.projects__card-control input[type="button"] {
+  background: none;
+}
+
+.projects__fund-button {
+  background: #95C11F;
+  color: #fff;
+  padding: 0.75em 1.5em;
+}
+
+.projects__card-header {
+    display: flex;
+    padding: 0.5em 1em;
+    align-items: center;
+}
+
+.projects__name {
+    font-size: 1.2em;
+    flex: 1 1 auto;
+    color: #009FE3;
+}
+
+.projects__card-picture {
+  min-height: 40px;
+}
+
+.projects__card-detail {
+  display: flex;
+}
+
+.projects__card-max-cost {
+  background: #1D71B8;
+  color: #fff;
+  padding: 0.5em;
+  text-align: center;
+  flex: 1 1 auto;
+}
+
+.projects__card-current-cost {
+  background: #E6E7E8;
+  color: #808184;
+  padding: 0.5em;
+  text-align: center;
+  flex: 1 1 auto;
+}
+
+.projects__card-days-left {
+  color: #009FE3;
+  padding: 0.5em;
+  text-align: center;
+  flex: 1 1 auto;
+}
+
+.projects__detail-title {
+  font-size: 1em;
+  margin: 0;
+  font-family: Glober-Light;
+}
+
+.projects__detail-value {
+  font-size: 2em;
+  margin: 0.5em 0;
+  font-family: Roboto;
+}
+
+.projects__detail-subtext {
+  font-size: 0.75em;
+  margin: 0;
+  font-family: Glober-Light;
+}
+
+.projects__card-description {
+  display: none;
+}

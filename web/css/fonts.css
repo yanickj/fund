@@ -1,0 +1,14 @@
+@font-face {
+  font-family: Glober;
+  src: url("/fonts/Fontfabric - Glober Regular.ttf");
+}
+
+@font-face {
+  font-family: Glober-Light;
+  src: url("/fonts/Fontfabric - Glober Light.ttf");
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("/fonts/Roboto-Regular.ttf");
+}
