@@ -24,13 +24,7 @@ class ProjectController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $projects = $em->getRepository('AppBundle:Project')->findAll();
-
-        return $this->render('project/index.html.twig', array(
-            'projects' => $projects,
-        ));
+        return $this->redirect("/");
     }
 
     /**
