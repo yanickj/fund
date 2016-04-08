@@ -31,6 +31,10 @@
                   {% endif %}
               </header>
 
+              <div class="projects__card-description">
+                  {{ project.description }}
+              </div>
+
               <div class="projects__card-picture-wrapper">
                   <img class="projects__card-picture" src="/uploads/images/{{ project.imageLink }}" />
               </div>
@@ -52,10 +56,6 @@
                       <p class="projects__detail-title">Days Left to Fun(d)</p>
                       <p class="projects__detail-value">{{ countDown(project) }}</p>
                   </div>
-              </div>
-
-              <div class="projects__card-description">
-                  {{ project.description }}
               </div>
           </div>
       {% endfor %}
