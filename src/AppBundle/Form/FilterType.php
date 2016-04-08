@@ -15,7 +15,10 @@ class FilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('filter', 'choice', [
-            'choices' => ['Expiring Soon', 'Mine'],
+            'choices' => [
+                'expire' => 'Expiring Soon',
+                'me' => 'Mine',
+            ],
         ]);
         $builder->add('search', 'submit');
     }
