@@ -64,7 +64,7 @@ class NotifyParticipantsofExpirationCommand extends ContainerAwareCommand
     public function getExpiredProjects()
     {
         return $this->em->getRepository('AppBundle:Project')
-                        ->findBy(['expirationDate' => new DateTime()]);
+                        ->findBy(['expirationDate' => new \DateTime()]);
     }
 
     public function getParticipants($expiredProject)
