@@ -21,9 +21,9 @@ class ParticipationService
     protected $participants;
 
     /**
-     * @var mixed
+     * @var TokenStorage
      */
-    protected $user;
+    protected $context;
 
     /**
      * AppExtension constructor.
@@ -33,7 +33,7 @@ class ParticipationService
     public function __construct(EntityManager $em, TokenStorage $context)
     {
         $this->participants = $em->getRepository('AppBundle:Participant');
-        $this->user = $context->getToken()->getUser();
+        $this->context = $context;
     }
 
     /**
@@ -43,7 +43,7 @@ class ParticipationService
      */
     public function isParticipant(Project $project)
     {
-        $participation = $this->participants->findOneBy(['project' => $project, 'name' => $this->user->getUsername()]);
+        $participation = $this->participants->findOneBy(['project' => $project, 'name' => $this->context->getToken()->getUser()->getUsername()]);
 
         return !is_null($participation);
     }
