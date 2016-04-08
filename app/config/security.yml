@@ -33,7 +33,7 @@ security:
 
             oauth:
                 resource_owners:
-                    google:             "/login/check-google"
+                    slack:  "/login/check-slack"
                 login_path:        /login
                 use_forward:       false
                 failure_path:      /login

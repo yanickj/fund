@@ -10,8 +10,8 @@ hwi_oauth_login:
     resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
     prefix:   /login
 
-google_login:
-    path: /login/check-google
+slack_login:
+    path: /login/check-slack
 
 logout:
     path:   /logout
