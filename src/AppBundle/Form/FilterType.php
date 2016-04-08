@@ -16,7 +16,7 @@ class FilterType extends AbstractType
     {
         $builder->add('filter', 'choice', [
             'choices' => [
-                'expire' => 'Expiring Soon',
+                'all' => 'All',
                 'me' => 'Mine',
             ],
             'label' => false
