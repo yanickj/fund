@@ -20,6 +20,7 @@ class ProjectType extends AbstractType
             ->add('cost')
             ->add('minParticipants')
             ->add('imageLink')
+            ->add('expirationDate')
         ;
     }
     
