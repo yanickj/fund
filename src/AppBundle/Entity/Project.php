@@ -66,6 +66,15 @@ class Project
     protected $imageLink;
 
     /**
+    * Date the thing expires.
+    *
+     * @var date $expirationDate
+     *
+     * @ORM\Column(name="expirationDate", type="date")
+     */
+    protected $expirationDate;
+
+    /**
      * @return int
      */
     public function getId()
@@ -165,6 +174,26 @@ class Project
     public function setImageLink($imageLink)
     {
         $this->imageLink = $imageLink;
+
+        return $this;
+    }
+
+    /**
+     * @return Date
+     */
+    public function getExpirationDate()
+    {
+        return $this->expirationDate;
+    }
+
+    /**
+     * @param Date $expirationDate
+     *
+     * @return $this
+     */
+    public function setExpirationDate($expirationDate)
+    {
+        $this->expirationDate = $expirationDate;
 
         return $this;
     }
