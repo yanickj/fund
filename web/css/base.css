@@ -1,0 +1,70 @@
+* {
+    box-sizing: border-box;
+    font-family: Glober;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    min-width: 299px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 15px;
+}
+
+body {
+  margin: 0;
+}
+
+@media (max-width: 992px) {
+    html { font-size: 13px; }
+}
+
+@media (max-width: 768px) {
+    html { font-size: 11px; }
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.app__header-wrapper {
+  width: 100%;
+  padding: 2rem 3rem;
+  background: #F6F6F6;
+  border-bottom: 1px solid #C6C6C6;
+}
+
+.app__header {
+  max-width: 980px;
+  margin: auto;
+}
+
+.app__logo {
+  height: 2rem;
+  width: 12rem;
+  background: url("/images/sidefund-logo.svg") no-repeat;
+  background-size: cover;
+  background-origin: content-box;
+  display: inline-block;
+}
+
+.app__body {
+  max-width: 980px;
+  margin: auto;
+  padding: 2rem 0;
+}
+
+@media (max-width: 1200px) {
+  .app__body {
+    padding: 2rem 3rem;
+  }
+}

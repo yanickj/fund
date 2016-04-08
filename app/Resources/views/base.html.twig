@@ -2,15 +2,29 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}SideFund{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/fonts.css') }}"></link>
+            <link rel="stylesheet" href="{{ asset('css/base.css') }}"></link>
+            <link rel="stylesheet" href="{{ asset('/css/projects.css') }}"></link>
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% if app.user %}
-            <a href="{{ path('logout') }}">Logout</a>
-        {% endif %}
-        {% block body %}{% endblock %}
+        <header class="app__header-wrapper">
+            <div class="app__header">
+                <span class="app__logo"></span>
+            </div>
+
+            {% if app.user %}
+                <a href="{{ path('logout') }}">Logout</a>
+            {% endif %}
+        </header>
+
+        <main class="app__body">
+            {% block body %}{% endblock %}
+        </main>
+
         {% block javascripts %}{% endblock %}
     </body>
 </html>

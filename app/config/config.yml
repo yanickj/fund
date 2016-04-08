@@ -71,10 +71,8 @@ hwi_oauth:
     # list of names of the firewalls in which this bundle is active, this setting MUST be set
     firewall_names: [main]
     resource_owners:
-        google:
-            type:                google
-            client_id:           "%client_id%"
-            client_secret:       "%client_secret%"
-            scope:               "email profile"
-            options:
-                csrf: true
+        slack:
+            type: slack
+            client_id: "%client_id%"
+            client_secret: "%client_secret%"
+            scope: "chat:write:bot channels:read"
