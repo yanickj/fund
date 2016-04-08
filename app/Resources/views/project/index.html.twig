@@ -18,7 +18,16 @@
 
               <header class="projects__card-header">
                   <div class="projects__name">{{ project.name }}</div>
-                  <input class="projects__fund-button" type="button" value="Fun(d) It!"/>
+
+                  {% if isParticipant(project) %}
+                      <a class="projects__defund-button" href="{{ path('participate', {'id': project.id}) }}">
+                          JK :(
+                      </a>
+                  {% else %}
+                      <a class="projects__fund-button" href="{{ path('participate', {'id': project.id}) }}">
+                          Fun(d) it!
+                      </a>
+                  {% endif %}
               </header>
 
               <div class="projects__card-picture">

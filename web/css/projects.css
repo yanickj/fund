@@ -63,6 +63,14 @@
   background: #95C11F;
   color: #fff;
   padding: 0.75em 1.5em;
+  text-decoration: none;
+}
+
+.projects__defund-button {
+  background: #BE1622;
+  color: #fff;
+  padding: 0.75em 1.5em;
+  text-decoration: none;
 }
 
 .projects__card-header {
