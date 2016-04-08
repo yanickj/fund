@@ -1,51 +1,52 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Project list</h1>
+    <div class="projects__controls">
+        <a class="projects__new-link" href="{{ path('project_new') }}">
+          <span class="projects__new-icon"></span>
+          New Campaign
+        </a>
+    </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Cost</th>
-                <th>MinPeople</th>
-                <th>Image</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for project in projects %}
-            <tr>
-                <td><a href="{{ path('project_show', { 'id': project.id }) }}">{{ project.id }}</a></td>
-                <td>{{ project.name }}</td>
-                <td>{{ project.description }}</td>
-                <td>{{ project.cost }}</td>
-                <td>{{ project.minParticipants }}</td>
-                <td><img src="{{ project.imageLink }}" /></td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('project_show', { 'id': project.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('project_edit', { 'id': project.id }) }}">edit</a>
-                        </li>
-                        {% if not isParticipant(project) %}
-                            <li><a href="{{ path('participate', {'id': project.id}) }}">Fund</a></li>
+    <div class="projects__cards">
+      {% for project in projects %}
+          <div class="projects__card">
+              <div class="projects__card-control">
+                  <input class="projects__campaign-button" type="button" value="Campaign" />
+                  <input class="projects__description-button" type="button" value="Description" />
+              </div>
 
-                        {% endif %}
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+              <header class="projects__card-header">
+                  <div class="projects__name">{{ project.name }}</div>
+                  <input class="projects__fund-button" type="button" value="Fun(d) It!"/>
+              </header>
 
-    <ul>
-        <li>
-            <a href="{{ path('project_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+              <div class="projects__card-picture">
+              </div>
+
+              <div class="projects__card-detail">
+                  <div class="projects__card-max-cost">
+                      <p class="projects__detail-title">Max Cost / Person</p>
+                      <p class="projects__detail-value">$12.50</p>
+                      <p class="projects__detail-subtext">(10 min. participants)</p>
+                  </div>
+
+                  <div class="projects__card-current-cost">
+                      <p class="projects__detail-title">Current Cost / Person</p>
+                      <p class="projects__detail-value">$5.60</p>
+                      <p class="projects__detail-subtext">(12 participants)</p>
+                  </div>
+
+                  <div class="projects__card-days-left">
+                      <p class="projects__detail-title">Days Left to Fun(d)</p>
+                      <p class="projects__detail-value">4</p>
+                  </div>
+              </div>
+
+              <div class="projects__card-description">
+                  {{ project.description }}
+              </div>
+          </div>
+      {% endfor %}
+    </div>
 {% endblock %}
