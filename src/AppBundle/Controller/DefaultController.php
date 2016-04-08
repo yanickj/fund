@@ -15,8 +15,9 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-
-        $projects = $em->getRepository('AppBundle:Project')->findAll();
+        $qb = $em->getRepository('AppBundle:Project')->createQueryBuilder('p');
+        $qb->orderBy('expirationDate', 'ASC');
+        $projects = $this->get('knp_paginator')->paginate($qb, $request->query->getInt('page', 1), 12);
 
         return $this->render('project/index.html.twig', array(
             'projects' => $projects,
