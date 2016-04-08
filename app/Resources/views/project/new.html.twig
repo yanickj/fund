@@ -1,16 +1,45 @@
-{% extends 'base.html.twig' %}
+{% block modal %}
+    <div class="projects-new__modal">
+        <header class="projects-new__header">
+            <div class="projects-new__title">New Campaign</div>
+            <div class="projects-new__header-placeholder"></div>
+            <div class="projects-new__close-wrapper">
+                <span class="projects-new__close" id="close-modal"></span>
+            </div>
+        </header>
 
-{% block body %}
-    <h1>Project creation</h1>
+        <div class="projects-new__form-wrapper">
+            {{ form_start(form, { 'attr': { 'id': 'new-project-form' } }) }}
+                {{ form_label(form.name) }}
+                {{ form_widget(form.name, { 'attr': { 'class': 'projects-new__name', 'placeholder': 'Campaign Name' } }) }}
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+                {{ form_label(form.description) }}
+                {{ form_widget(form.description, { 'attr': { 'class': 'projects-new__description', 'placeholder': 'Campaign Description' } }) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('project_index') }}">Back to the list</a>
-        </li>
-    </ul>
+                <div class="projects-new__details">
+                    <div>
+                        {{ form_label(form.cost) }}
+                        {{ form_widget(form.cost, { 'attr': { 'class': 'projects-new__cost', 'placeholder': 'Total Cost' } }) }}
+                    </div>
+
+                    <div>
+                        {{ form_label(form.minParticipants) }}
+                        {{ form_widget(form.minParticipants, { 'attr': { 'class': 'projects-new__min-participants',  'placeholder': 'Min. Participants' } }) }}
+                    </div>
+
+                    <div>
+                        {{ form_label(form.expirationDate) }}
+                        {{ form_widget(form.expirationDate, { 'attr': { 'class': 'projects-new__expiration',  'placeholder': 'Expiration Date' } }) }}
+                    </div>
+                </div>
+
+                <fieldset class="projects-new__controls">
+                    {{ form_label(form.imageLink) }}
+                    {{ form_widget(form.imageLink, { 'attr': { 'placeholder': 'Image Link' } }) }}
+
+                    <input class="projects-new__submit" type="submit" value="SUBMIT" />
+                </fieldset>
+            {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock %}
