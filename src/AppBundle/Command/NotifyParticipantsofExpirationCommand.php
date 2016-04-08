@@ -112,9 +112,10 @@ class NotifyParticipantsofExpirationCommand extends ContainerAwareCommand
     {
         if ($expiredProjectMin >= $expiredProjectCount)
         {
-            return 'Hooray! Your project, '.$expiredProjectName.' was funded! You owe '.$expiredProjectCost.'.';
+            return urlencode('Hooray! Your project, '.$expiredProjectName.' was funded! You owe $'.$expiredProjectCost.'.');
         }
-        return 'Sorry. Not enough people funded '.$expiredProjectName.'.';
+        
+        return urlencode('Sorry. Not enough people funded '.$expiredProjectName.'.');
     }
 
 }
