@@ -14,13 +14,20 @@ class ProjectType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $now = new \DateTime();
         $builder
             ->add('name')
             ->add('description')
             ->add('cost')
             ->add('minParticipants')
             ->add('imageLink')
-            ->add('expirationDate')
+            ->add(
+                'expirationDate',
+                'date',
+                [
+                    'years' => [$now->format('Y'), $now->modify('+ 1 year')->format('Y')]
+                ]
+            )
         ;
     }
     
