@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Project;
+use Doctrine\ORM\Query\Expr\Join;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,15 +15,23 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $qb = $em->getRepository('AppBundle:Project')->createQueryBuilder('p');
+        $qb->orderBy('p.expirationDate', 'ASC');
+
         $filter = $this->createForm('AppBundle\Form\FilterType');
         $filter->handleRequest($request);
         if ($filter->isSubmitted() && $filter->isValid()) {
             $data = $filter->getData();
-            var_dump($data);
+            if ($data['filter'] == 'me') {
+                $qb->innerJoin(
+                    'AppBundle:Participant',
+                    'participant',
+                    Join::WITH,
+                    'participant.project = p and participant.name = :name'
+                )->setParameter('name', $this->get('security.token_storage')->getToken()->getUsername());
+            }
         }
-        $em = $this->getDoctrine()->getManager();
-        $qb = $em->getRepository('AppBundle:Project')->createQueryBuilder('p');
-        $qb->orderBy('p.expirationDate', 'ASC');
         $projects = $this->get('knp_paginator')->paginate($qb, $request->query->getInt('page', 1), 2);
 
         return $this->render('project/index.html.twig', array(
