@@ -29,7 +29,7 @@ class DefaultController extends Controller
 
         return $this->render('project/index.html.twig', array(
             'projects' => $projects,
-            'filter' => $filter,
+            'filter' => $filter->createView(),
         ));
     }
 
