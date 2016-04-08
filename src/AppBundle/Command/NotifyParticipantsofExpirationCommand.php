@@ -6,6 +6,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Validator\Constraints\DateTime;
+use Doctrine\ORM\EntityManager;
 
 /**
  * Class NotifyParticipantsofExpirationCommand
@@ -30,6 +31,11 @@ class NotifyParticipantsofExpirationCommand extends ContainerAwareCommand
     protected $em;
 
     /**
+     * @var string
+     */
+    protected $url;
+
+    /**
      * @param InputInterface  $input
      * @param OutputInterface $output
      *
@@ -44,8 +50,8 @@ class NotifyParticipantsofExpirationCommand extends ContainerAwareCommand
             $participants = $this->getParticipants($expiredProject);
             foreach($participants as $participant)
             {
-                $url = $this->generateUrl();
-                $this->sendCurlRequest($url);
+                $this->url = $this->generateUrl();
+                $this->sendCurlRequest();
             }
         }
     }
@@ -58,26 +64,37 @@ class NotifyParticipantsofExpirationCommand extends ContainerAwareCommand
 
     public function getParticipants($expiredProject)
     {
-        return [1];
+        return $this->em->getRepository('AppBundle:Participant')
+            ->findBy(['project' => $expiredProject]);
     }
 
     public function generateUrl()
     {
         $params = [
             'url' => "https://slack.com/api/chat.postMessage?",
-            'token' => 1,
-            'channel' => 1,
-            'text' => 1,
-            'username' => 1,
-            'icon_emoji' => 1,
+            'token' => $this->getContainer()->getParameter('client_token'),
+            'channel' => '%40sharon',
+            'text' => 'hi',
+            'username' => 'SideFun(d)',
+            'icon_emoji' => '%3Aparty%3A',
             'pretty' => 1,
         ];
 
+        return $params['url'].
+            '?token='.$params['token'].
+            '&channel='.$params['channel'].
+            '&text='.$params['text'].
+            '&username='.$params['uesrname'].
+            '&icon_emoji='.$params['icon_emoji'].
+            '&pretty='.$params['pretty'];
     }
 
     public function sendCurlRequest()
     {
-
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $this->url);
+        curl_exec($ch);
+        curl_close($ch);
     }
 
 }
