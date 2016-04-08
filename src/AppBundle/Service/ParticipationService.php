@@ -40,6 +40,8 @@ class ParticipationService
      * Returns true if the logged in user is participating in an project/campaign.
      *
      * @param Project $project
+     *
+     * @return bool
      */
     public function isParticipant(Project $project)
     {
