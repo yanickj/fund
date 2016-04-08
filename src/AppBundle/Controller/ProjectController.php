@@ -54,6 +54,8 @@ class ProjectController extends Controller
             $em->persist($project);
             $em->flush();
 
+            $this->sendToSlack($project->getName());
+
             return $this->redirect('/');
         }
 
@@ -140,5 +142,31 @@ class ProjectController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    private function sendToSlack($projectName)
+    {
+        $params = [
+            'url' => "https://slack.com/api/chat.postMessage",
+            'token' => $this->container->getParameter('client_token'),
+            'channel' => '%40sidefund',
+            'text' => urlencode('Somebody nominated '.$projectName.' for funding! Visit sidefund.sidecartechnologies.com!'),
+            'username' => 'SideFun(d)',
+            'icon_emoji' => '%3Aparty%3A',
+            'pretty' => 1,
+        ];
+
+        $url = $params['url'].
+        '?token='.$params['token'].
+        '&channel='.$params['channel'].
+        '&text='.$params['text'].
+        '&username='.$params['username'].
+        '&icon_emoji='.$params['icon_emoji'].
+        '&pretty='.$params['pretty'];
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_exec($ch);
+        curl_close($ch);
     }
 }
