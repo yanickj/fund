@@ -148,7 +148,7 @@ class ProjectController extends Controller
     {
         $params = [
             'url' => "https://slack.com/api/chat.postMessage",
-            'token' => $this->container()->getParameter('client_token'),
+            'token' => $this->container->getParameter('client_token'),
             'channel' => '%40sidefund',
             'text' => urlencode('Somebody nominated '.$projectName.' for funding! Visit sidefund.sidecartechnologies.com!'),
             'username' => 'SideFun(d)',
