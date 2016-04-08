@@ -32,7 +32,7 @@ class ParticipantController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('project_show', [$project]));
+        return $this->redirect("/");
     }
 
     /**
@@ -50,7 +50,7 @@ class ParticipantController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('project_show', [$project]));
+        return $this->redirect("/");
     }
 
     /**
