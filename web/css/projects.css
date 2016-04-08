@@ -43,6 +43,8 @@
   margin-bottom: 2rem;
   width: calc(50% - 1rem);
   border: 1px solid #C6C6C6;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width: 962px) {
@@ -95,6 +97,7 @@
 
 .projects__card-picture-wrapper {
   min-height: 40px;
+  flex: 1 1 auto;
 }
 
 .projects__card-picture {
